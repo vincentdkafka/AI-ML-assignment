@@ -7,7 +7,6 @@ initialization and text generation for header analysis.
 from transformers import pipeline, set_seed
 import warnings
 
-# Suppress warnings for cleaner output
 warnings.filterwarnings("ignore")
 
 
@@ -57,10 +56,8 @@ class HeaderAnalysisModel:
         """
         print(f"🤖 Initializing local AI model ({self.model_name})...")
         try:
-            # Set seed for reproducible results
             set_seed(42)
             
-            # Initialize text generation pipeline
             self.generator = pipeline(
                 "text-generation",
                 model=self.model_name,
@@ -68,13 +65,13 @@ class HeaderAnalysisModel:
                 num_return_sequences=1,
                 temperature=0.7,
                 do_sample=True,
-                pad_token_id=50256  # GPT-2's EOS token
+                pad_token_id=50256  
             )
             print("✓ Model initialized successfully!")
             return True
             
         except Exception as e:
-            print(f"✗ Error initializing model: {e}")
+            print(f" Error initializing model: {e}")
             return False
     
     def _get_fallback_description(self, header_name):
@@ -89,11 +86,9 @@ class HeaderAnalysisModel:
         """
         header_lower = header_name.lower()
         
-        # Check for exact matches first
         if header_lower in self.fallback_descriptions:
             return self.fallback_descriptions[header_lower]
         
-        # Then check for partial matches
         for keyword, description in self.fallback_descriptions.items():
             if keyword in header_lower:
                 return description
