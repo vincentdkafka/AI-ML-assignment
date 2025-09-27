@@ -1,9 +1,3 @@
-
-"""
-This module handles all Hugging Face transformer model operations including
-initialization and text generation for header analysis.
-"""
-
 from transformers import pipeline, set_seed
 import warnings
 
@@ -11,17 +5,9 @@ warnings.filterwarnings("ignore")
 
 
 class HeaderAnalysisModel:
-    """
-    A class to handle the AI model for generating header descriptions.
-    """
-    
+ 
     def __init__(self, model_name="distilgpt2"):
-        """
-        Initialize the Header Analysis Model.
-        
-        Args:
-            model_name (str): Name of the Hugging Face model to use
-        """
+
         self.model_name = model_name
         self.generator = None
         self.fallback_descriptions = {
@@ -48,12 +34,7 @@ class HeaderAnalysisModel:
         }
     
     def initialize_model(self):
-        """
-        Initialize the text generation model.
-        
-        Returns:
-            bool: True if successful, False otherwise
-        """
+
         print(f"🤖 Initializing local AI model ({self.model_name})...")
         try:
             set_seed(42)
@@ -75,15 +56,7 @@ class HeaderAnalysisModel:
             return False
     
     def _get_fallback_description(self, header_name):
-        """
-        Get fallback description based on keyword matching.
-        
-        Args:
-            header_name (str): The header name to analyze
-            
-        Returns:
-            str: Fallback description if found, None otherwise
-        """
+
         header_lower = header_name.lower()
         
         if header_lower in self.fallback_descriptions:
@@ -96,15 +69,7 @@ class HeaderAnalysisModel:
         return None
     
     def _generate_ai_description(self, header_name):
-        """
-        Generate description using the AI model.
-        
-        Args:
-            header_name (str): The header name to analyze
-            
-        Returns:
-            str: Generated description or fallback
-        """
+
         if not self.generator:
             return "a data field
         
@@ -145,18 +110,7 @@ class HeaderAnalysisModel:
             return "a data field"
     
     def generate_description(self, header_name):
-        """
-        Generate a descriptive text for a given header.
-        
-        This method first tries to use predefined fallbacks for common field types,
-        then falls back to AI generation if no match is found.
-        
-        Args:
-            header_name (str): The header name to analyze
-            
-        Returns:
-            str: Generated description
-        """
+
         fallback_desc = self._get_fallback_description(header_name)
         if fallback_desc:
             return fallback_desc
@@ -164,15 +118,7 @@ class HeaderAnalysisModel:
         return self._generate_ai_description(header_name)
     
     def analyze_headers(self, headers):
-        """
-        Analyze all headers and generate descriptions.
-        
-        Args:
-            headers (list): List of header names
-            
-        Returns:
-            dict: Dictionary mapping headers to descriptions
-        """
+
         if not headers:
             return {}
         
