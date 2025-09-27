@@ -1,8 +1,4 @@
 
-"""
-This module contains utility functions for CSV operations, file I/O,
-and other helper functions used in the header analysis project.
-"""
 
 import pandas as pd
 import os
@@ -10,15 +6,7 @@ from datetime import datetime
 
 
 def load_csv_headers(csv_file_path):
-    """
-    Load the headers (column names) from a CSV file.
-    
-    Args:
-        csv_file_path (str): Path to the CSV file
-        
-    Returns:
-        list: List of header names, empty list if error
-    """
+
     try:
         df = pd.read_csv(csv_file_path, nrows=0)
         headers = df.columns.tolist()
@@ -35,15 +23,7 @@ def load_csv_headers(csv_file_path):
 
 
 def validate_csv_file(csv_file_path):
-    """
-    Validate that a CSV file exists and is readable.
-    
-    Args:
-        csv_file_path (str): Path to the CSV file
-        
-    Returns:
-        bool: True if file is valid, False otherwise
-    """
+
     if not os.path.exists(csv_file_path):
         print(f"✗ CSV file '{csv_file_path}' does not exist.")
         return False
@@ -66,16 +46,7 @@ def validate_csv_file(csv_file_path):
 
 
 def save_results_to_file(results, output_file="output.txt"):
-    """
-    Save the analysis results to a text file.
-    
-    Args:
-        results (dict): Dictionary of header descriptions
-        output_file (str): Output file path
-        
-    Returns:
-        bool: True if saved successfully, False otherwise
-    """
+ 
     try:
         output_lines = []
         output_lines.append("CSV Header Analysis Results")
@@ -104,12 +75,7 @@ def save_results_to_file(results, output_file="output.txt"):
 
 
 def display_results(results):
-    """
-    Display the analysis results on the console.
-    
-    Args:
-        results (dict): Dictionary of header descriptions
-    """
+ 
     if not results:
         print("❌ No results to display.")
         return
@@ -123,40 +89,25 @@ def display_results(results):
 
 
 def print_header(title, width=50):
-    """
-    Print a formatted header with decorative borders.
-    
-    Args:
-        title (str): Title text to display
-        width (int): Width of the header border
-    """
+ 
     print(title)
     print("=" * width)
 
 
 def print_success_message():
-    """
-    Print a success message when analysis is completed.
-    """
+    
     print("\n✅ Analysis completed successfully!")
     print("=" * 50)
 
 
 def print_startup_message():
-    """
-    Print the application startup message.
-    """
+    
     print("🚀 CSV Header Analyzer Starting...")
     print("=" * 50)
 
 
 def get_project_info():
-    """
-    Get basic project information.
-    
-    Returns:
-        dict: Dictionary containing project metadata
-    """
+   
     return {
         "name": "CSV Header Analyzer",
         "version": "1.0.0",
@@ -167,15 +118,7 @@ def get_project_info():
 
 
 def create_sample_csv(file_path="demo.csv"):
-    """
-    Create a sample CSV file for testing purposes.
-    
-    Args:
-        file_path (str): Path where to create the sample CSV
-        
-    Returns:
-        bool: True if created successfully, False otherwise
-    """
+  
     try:
         sample_data = {
             'Invoice_ID': ['INV-001', 'INV-002', 'INV-003', 'INV-004', 'INV-005'],
@@ -207,15 +150,7 @@ def create_sample_csv(file_path="demo.csv"):
 
 
 def validate_output_path(output_path):
-    """
-    Validate that the output path is writable.
     
-    Args:
-        output_path (str): Path to validate
-        
-    Returns:
-        bool: True if path is writable, False otherwise
-    """
     try:
         test_content = "test"
         with open(output_path, 'w') as f:
@@ -232,15 +167,7 @@ def validate_output_path(output_path):
 
 
 def format_results_for_display(results):
-    """
-    Format results dictionary for better display.
-    
-    Args:
-        results (dict): Raw results dictionary
-        
-    Returns:
-        list: List of formatted result strings
-    """
+  
     if not results:
         return ["No results available."]
         
