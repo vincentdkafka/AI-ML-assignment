@@ -1,0 +1,10 @@
+CSV Header Analysis Results
+========================================
+Generated on: 2025-09-27 15:04:01
+
+• Invoice_ID → likely a unique transaction identifier
+• Vendor_Name → the supplier or vendor associated with the transaction
+• Amount → monetary value of the transaction
+• Payment_Date → date on which the payment was made
+
+Analysis completed successfully!

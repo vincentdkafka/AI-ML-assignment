@@ -1,0 +1,6 @@
+Invoice_ID,Vendor_Name,Amount,Payment_Date
+INV-001,TechCorp Solutions,2500.00,2024-01-15
+INV-002,Office Supplies Plus,450.75,2024-01-18
+INV-003,DataStream Analytics,15000.00,2024-01-22
+INV-004,CloudSync Services,899.99,2024-01-25
+INV-005,Marketing Dynamics,3200.50,2024-02-01
